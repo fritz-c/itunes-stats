@@ -7,7 +7,7 @@ class Podcast {
     constructor(allData) {
         this.id = allData.id[0].$['im:id'];
         this.title = allData.title[0];
-        this.summary = allData.summary[0];
+        this.summary = allData.summary ? allData.summary[0] : '';
         this.category = allData.category[0].$.label;
         this.reviews = [];
     }
