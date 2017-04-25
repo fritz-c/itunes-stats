@@ -52,9 +52,9 @@ class Podcast {
         );
     }
 
-    static getTopPodcasts(locale, count) {
-        count = count || 50;
-        return getParsedXMLAtUrl(`https://itunes.apple.com/${locale}/rss/toppodcasts/limit=${count}/explicit=true/xml`)
+    static getTopPodcasts(locale, genre, count = 50) {
+        const genreText = genre ? `/genre=${genre}` : '';
+        return getParsedXMLAtUrl(`https://itunes.apple.com/${locale}/rss/toppodcasts/limit=${count}${genreText}/explicit=true/xml`)
             .then((parsed) => {
                 // Working with the parsed xml object
                 return parsed.feed.entry.map(entry => new Podcast(entry));

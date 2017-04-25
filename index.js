@@ -8,8 +8,9 @@ const fs       = require('fs');
 const Podcast = require('./podcast');
 
 const LOCALE = 'jp';
+const EDUCATION_GENRE = 1304;
 
-Podcast.getTopPodcasts(LOCALE).then((topPodcasts) => {
+Podcast.getTopPodcasts(LOCALE, EDUCATION_GENRE).then((topPodcasts) => {
     console.log('Retrieved podcasts.'); // eslint-disable-line no-console
     Podcast.setReviewsOnPodcasts(topPodcasts, LOCALE).then(() => {
         const csv = json2csv({
